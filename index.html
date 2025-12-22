@@ -199,6 +199,65 @@ footer {
 <footer>
 © 2028 SSC & UPSC Preparation
 </footer>
+    <script>
+const quiz = [
+    {
+        q: "SSC CGL is conducted by?",
+        options: ["UPSC", "SSC", "IBPS", "Railway"],
+        answer: 1
+    },
+    {
+        q: "UPSC exam is for?",
+        options: ["Clerk", "IAS/IPS", "Bank PO", "Teacher"],
+        answer: 1
+    },
+    {
+        q: "Indian Constitution is related to?",
+        options: ["History", "Polity", "Geography", "Economy"],
+        answer: 1
+    }
+];
+
+let currentQ = 0;
+let score = 0;
+
+const questionEl = document.getElementById("question");
+const buttons = document.querySelectorAll("section button");
+const scoreEl = document.getElementById("score");
+
+function loadQuestion() {
+    questionEl.innerText = quiz[currentQ].q;
+    for (let i = 0; i < 4; i++) {
+        buttons[i].innerText = quiz[currentQ].options[i];
+    }
+}
+
+function checkAnswer(option) {
+    if (option === quiz[currentQ].answer) {
+        alert("✅ Correct!");
+        score++;
+        scoreEl.innerText = score;
+    } else {
+        alert("❌ Wrong!");
+    }
+}
+
+function nextQuestion() {
+    currentQ++;
+    if (currentQ < quiz.length) {
+        loadQuestion();
+    } else {
+        alert("🎉 Quiz Finished! Your Score: " + score);
+        currentQ = 0;
+        score = 0;
+        scoreEl.innerText = score;
+        loadQuestion();
+    }
+}
+
+loadQuestion();
+</script>
+
 
 <!-- ================= JAVASCRIPT ================= -->
 <script>
